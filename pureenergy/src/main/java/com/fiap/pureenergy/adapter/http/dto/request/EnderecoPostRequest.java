@@ -2,6 +2,7 @@ package com.fiap.pureenergy.adapter.http.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -33,7 +34,7 @@ public class EnderecoPostRequest {
     @Size(max = 10, message = "O CEP não pode ter mais que 10 caracteres")
     private String cep;
 
-    @NotBlank(message = "O ID do usuário é obrigatório")
+    @NotNull(message = "O ID do usuário é obrigatório")
     @JsonProperty("id_usuario")
     private Long idUsuario;
 

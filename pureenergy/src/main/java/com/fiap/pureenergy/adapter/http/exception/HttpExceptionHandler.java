@@ -1,6 +1,7 @@
 package com.fiap.pureenergy.adapter.http.exception;
 
 import com.fiap.pureenergy.adapter.http.dto.erros.ResponseErrors;
+import com.fiap.pureenergy.domain.exception.EnderecoNotFoundException;
 import com.fiap.pureenergy.domain.exception.UsuarioNotFoudException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,11 +40,23 @@ public class HttpExceptionHandler {
         return ResponseEntity.badRequest().body(listaDeErro);
     }
 
+    @ExceptionHandler(UsuarioNotFoudException.class)
     public ResponseEntity<Object> tratarUsuarioNotFoundException(UsuarioNotFoudException usuarioNotFoundException){
         ResponseErrors responseErro = new ResponseErrors();
         responseErro.setMensagem(usuarioNotFoundException.getMessage());
         return ResponseEntity.status(usuarioNotFoundException.HTTP_STATUS_CODE).body(responseErro);
     }
+
+    @ExceptionHandler(EnderecoNotFoundException.class)
+    public ResponseEntity<Object> tratarEnderecoNotFoundException(EnderecoNotFoundException enderecoNotFoundException){
+        ResponseErrors responseErro = new ResponseErrors();
+        responseErro.setMensagem(enderecoNotFoundException.getMessage());
+        responseErro.campo = "cep";
+        return ResponseEntity.status(enderecoNotFoundException.HTTP_STATUS_CODE).body(responseErro);
+    }
+
+
+
 
 
 }
