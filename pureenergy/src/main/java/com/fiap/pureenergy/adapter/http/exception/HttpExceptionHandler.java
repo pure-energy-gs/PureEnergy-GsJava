@@ -2,6 +2,7 @@ package com.fiap.pureenergy.adapter.http.exception;
 
 import com.fiap.pureenergy.adapter.http.dto.erros.ResponseErrors;
 import com.fiap.pureenergy.domain.exception.EnderecoNotFoundException;
+import com.fiap.pureenergy.domain.exception.ResidenciaNotFoudException;
 import com.fiap.pureenergy.domain.exception.UsuarioNotFoudException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +54,13 @@ public class HttpExceptionHandler {
         responseErro.setMensagem(enderecoNotFoundException.getMessage());
         responseErro.campo = "cep";
         return ResponseEntity.status(enderecoNotFoundException.HTTP_STATUS_CODE).body(responseErro);
+    }
+
+    @ExceptionHandler(ResidenciaNotFoudException.class)
+    public ResponseEntity<Object> tratarResidenciaNotFoundException(ResidenciaNotFoudException residenciaNotFoudException){
+        ResponseErrors responseErro = new ResponseErrors();
+        responseErro.setMensagem(residenciaNotFoudException.getMessage());
+        return ResponseEntity.status(residenciaNotFoudException.HTTP_STATUS_CODE).body(responseErro);
     }
 
 

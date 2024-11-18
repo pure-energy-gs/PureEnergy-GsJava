@@ -74,14 +74,11 @@ public class UsuarioController {
         UsuarioModel usuarioExistente = usuarioService.buscarUsuario(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        // Atualiza o modelo existente com os valores do DTO
         usuarioDtoMapper.updateModelFromPatchRequest(request, usuarioExistente);
 
-        // Atualiza o usuário no serviço
         UsuarioModel usuarioAtualizado = usuarioService.atualizarUsuario(id, usuarioExistente)
                 .orElseThrow(() -> new RuntimeException("Erro ao atualizar o usuário"));
 
-        // Retorna o objeto atualizado no corpo da resposta com status 200 (OK)
         return ResponseEntity.ok(usuarioAtualizado);
     }
 
