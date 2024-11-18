@@ -1,6 +1,7 @@
 package com.fiap.pureenergy.adapter.http.exception;
 
 import com.fiap.pureenergy.adapter.http.dto.erros.ResponseErrors;
+import com.fiap.pureenergy.domain.exception.ComodoNotFoundException;
 import com.fiap.pureenergy.domain.exception.EnderecoNotFoundException;
 import com.fiap.pureenergy.domain.exception.ResidenciaNotFoudException;
 import com.fiap.pureenergy.domain.exception.UsuarioNotFoudException;
@@ -61,6 +62,13 @@ public class HttpExceptionHandler {
         ResponseErrors responseErro = new ResponseErrors();
         responseErro.setMensagem(residenciaNotFoudException.getMessage());
         return ResponseEntity.status(residenciaNotFoudException.HTTP_STATUS_CODE).body(responseErro);
+    }
+
+    @ExceptionHandler(ComodoNotFoundException.class)
+    public ResponseEntity<Object> tratarComodoNotFoundException(ComodoNotFoundException comodoNotFoundException){
+        ResponseErrors responseErro = new ResponseErrors();
+        responseErro.setMensagem(comodoNotFoundException.getMessage());
+        return ResponseEntity.status(comodoNotFoundException.HTTP_STATUS_CODE).body(responseErro);
     }
 
 
