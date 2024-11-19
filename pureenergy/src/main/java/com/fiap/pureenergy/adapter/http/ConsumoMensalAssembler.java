@@ -15,17 +15,14 @@ public class ConsumoMensalAssembler implements RepresentationModelAssembler<Cons
     @Override
     public EntityModel<ConsumoMensalModel> toModel(ConsumoMensalModel consumoMensal) {
         return EntityModel.of(consumoMensal,
-                // Link para o próprio recurso (self)
                 linkTo(methodOn(ConsumoMensalController.class)
                         .detalharConsumoMensal(String.valueOf(consumoMensal.getIdConsumoMensal())))
                         .withSelfRel()
                         .withType("GET"),
-                // Link para a listagem de consumo mensal
                 linkTo(methodOn(ConsumoMensalController.class)
                         .listarConsumoMensal())
                         .withRel("listarconsumomensal")
                         .withType("GET"),
-                // Link para atualizar o recurso
                 linkTo(methodOn(ConsumoMensalController.class)
                         .atualizarConsumoMensal(String.valueOf(consumoMensal.getIdConsumoMensal()), new ConsumoMensalPutRequest()))
                         .withRel("atualizar")

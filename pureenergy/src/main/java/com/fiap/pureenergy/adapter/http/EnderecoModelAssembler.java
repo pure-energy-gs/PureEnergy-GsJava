@@ -14,15 +14,12 @@ public class EnderecoModelAssembler implements RepresentationModelAssembler<Ende
     @Override
     public EntityModel<EnderecoModel> toModel(EnderecoModel endereco) {
         return EntityModel.of(endereco,
-                // Link para o próprio recurso (self)
                 linkTo(methodOn(EnderecoController.class).detalharEndereco(endereco.getIdEndereco()))
                         .withSelfRel()
                         .withType("GET"),
-                // Link para a listagem de endereços
                 linkTo(methodOn(EnderecoController.class).listarEnderecos())
                         .withRel("listarenderecos")
                         .withType("GET"),
-                // Link para atualizar o recurso
                 linkTo(methodOn(EnderecoController.class).atualizarEndereco(endereco.getIdEndereco(), null))
                         .withRel("atualizar")
                         .withType("PUT")

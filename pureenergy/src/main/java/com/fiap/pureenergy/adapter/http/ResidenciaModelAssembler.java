@@ -16,15 +16,12 @@ public class ResidenciaModelAssembler implements RepresentationModelAssembler<Re
     @Override
     public EntityModel<ResidenciaModel> toModel(ResidenciaModel residencia) {
         return EntityModel.of(residencia,
-                // Link para o próprio recurso (self)
                 linkTo(methodOn(ResidenciaController.class).detalharResidencia(residencia.getIdResidencia()))
                         .withSelfRel()
                         .withType("GET"),
-                // Link para a listagem de residencias
                 linkTo(methodOn(ResidenciaController.class).listarResidencias())
                         .withRel("listarresidencias")
                         .withType("GET"),
-                // Link para atualizar o recurso
                 linkTo(methodOn(ResidenciaController.class).atualizarResidencia(residencia.getIdResidencia(), new ResidenciaPutRequest()))
                         .withRel("atualizar")
                         .withType("PUT")

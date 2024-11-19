@@ -51,4 +51,5 @@ public class UsuarioModel {
     @JsonProperty("pontuacao_usuario")
     @JsonView(Detalhes.class)
     private PontuacaoUsuarioModel pontuacaoUsuario;
+
 }
