@@ -75,8 +75,11 @@ public class HttpExceptionHandler {
         return ResponseEntity.status(consumoMensalNotFoundException.HTTP_STATUS_CODE).body(responseErro);
     }
 
-
-
-
+    @ExceptionHandler(PontuacaoUsuarioNotFoundException.class)
+    public ResponseEntity<Object> tratarPontuacaoUsuarioNotFoundException(PontuacaoUsuarioNotFoundException pontuacaoUsuarioNotFoundException){
+        ResponseErrors responseErro = new ResponseErrors();
+        responseErro.setMensagem(pontuacaoUsuarioNotFoundException.getMessage());
+        return ResponseEntity.status(pontuacaoUsuarioNotFoundException.HTTP_STATUS_CODE).body(responseErro);
+    }
 
 }
