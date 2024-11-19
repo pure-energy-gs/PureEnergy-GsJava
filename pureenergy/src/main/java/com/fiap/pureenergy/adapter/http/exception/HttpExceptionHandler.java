@@ -1,10 +1,7 @@
 package com.fiap.pureenergy.adapter.http.exception;
 
 import com.fiap.pureenergy.adapter.http.dto.erros.ResponseErrors;
-import com.fiap.pureenergy.domain.exception.ComodoNotFoundException;
-import com.fiap.pureenergy.domain.exception.EnderecoNotFoundException;
-import com.fiap.pureenergy.domain.exception.ResidenciaNotFoudException;
-import com.fiap.pureenergy.domain.exception.UsuarioNotFoudException;
+import com.fiap.pureenergy.domain.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -69,6 +66,13 @@ public class HttpExceptionHandler {
         ResponseErrors responseErro = new ResponseErrors();
         responseErro.setMensagem(comodoNotFoundException.getMessage());
         return ResponseEntity.status(comodoNotFoundException.HTTP_STATUS_CODE).body(responseErro);
+    }
+
+    @ExceptionHandler(ConsumoMensalNotFoundException.class)
+    public ResponseEntity<Object> tratarConsumoMensalNotFoundException(ConsumoMensalNotFoundException consumoMensalNotFoundException){
+        ResponseErrors responseErro = new ResponseErrors();
+        responseErro.setMensagem(consumoMensalNotFoundException.getMessage());
+        return ResponseEntity.status(consumoMensalNotFoundException.HTTP_STATUS_CODE).body(responseErro);
     }
 
 
