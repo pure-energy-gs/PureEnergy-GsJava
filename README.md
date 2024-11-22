@@ -125,16 +125,3 @@ O projeto é organizado em camadas, separando responsabilidades para facilitar a
   - `PUT /aparelhos/{id}`: Atualizar aparelho.
   - `DELETE /aparelhos/{id}`: Deletar aparelho.
 
----
-
-## Contribuição
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir **issues** ou enviar **pull requests** para melhorias e correções.
-
----
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais informações.
-
----
