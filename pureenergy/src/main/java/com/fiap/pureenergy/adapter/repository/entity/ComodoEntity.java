@@ -26,6 +26,4 @@ public class ComodoEntity {
 
     @OneToMany(mappedBy = "comodo", cascade = CascadeType.ALL)
     private List<EletrodomesticoEntity> eletrodomesticoEntities;
-
-
 }
