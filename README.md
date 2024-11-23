@@ -17,11 +17,6 @@ Video com a criação da vm e aplicação: [https://www.youtube.com/watch?v=qvUH
 Para subir o docker acessando a maquina pronta:
 
 # Instalar a extensão de Remote SSH no VS Code
-
-# Garantir que o container esta desligado
-```
-sudo docker stop ff0fcc9f13e3
-```
 ```
 Host vmpureenergy
     HostName 191.232.33.49
